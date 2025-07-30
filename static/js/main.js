@@ -47,6 +47,7 @@ function renderWorkers(filter = "all") {
             filter === "all" || 
             worker.role === filter || 
             (filter === "Mentor" && worker.role === "Mentora") || // Permite "Mentor" e "Mentora"
+            (filter === "Monitor") ||
             (filter === "Participantes" && worker.role === "Participante")
         )
         .forEach(worker => {
