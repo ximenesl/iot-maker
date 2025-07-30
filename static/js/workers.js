@@ -28,11 +28,32 @@ const workers = [
         github: 'https://github.com/fisocame'
     },
     {
+        name: 'Homero Flavio',
+        role: 'Participante',
+        linkedin: 'https://www.linkedin.com/in/homeroflavio/',
+        image: '/static/imgs/workerHomero.jpg',
+        github: 'https://github.com/Homeroflavio'
+    },
+    {
+        name: 'Igor Alves',
+        role: 'Participante',
+        linkedin: '',
+        image: '/static/imgs/workerIgor.jpg',
+        github: ''
+    },
+    {
+        name: 'Isack Souza',
+        role: 'Participante',
+        linkedin: 'https://www.linkedin.com/in/isack-souza-050274240/',
+        image: '/static/imgs/workerIsack.jpg',
+        github: 'https://github.com/IsackOtavio'
+    },
+    {
         name: 'Joelson José',
         role: 'Participante',
-        linkedin: 'https://linkedin.com/in/julianabvasc/',
-        image: '/static/imgs/workerJuliana.jpg',
-        github: 'https://github.com/julianabvasc'
+        linkedin: 'https://www.linkedin.com/in/joelsonjosedev/',
+        image: '/static/imgs/workerJoelson.jpg',
+        github: 'https://github.com/JoelsonJose'
     },
     {
         name: 'Juliana Vasconcelos',
@@ -60,6 +81,13 @@ const workers = [
         role: 'Participante',
         linkedin: 'https://www.linkedin.com/in/vanda-vitorio-ads?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
         image: '/static/imgs/workerVanda.jpg',
+        github: 'https://github.com/vandinha01'
+    },
+    {
+        name: 'Ygor Sampaio',
+        role: 'Participante',
+        linkedin: '',
+        image: '/static/imgs/workerYgor.jpg',
         github: ''
     },
 ]
