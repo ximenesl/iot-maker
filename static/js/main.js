@@ -101,9 +101,6 @@ const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     loop: true,
     loopedSlides: 3, // Número de slides duplicados para o loop funcionar
-    autoplay: {
-        delay: 3000,
-    },
     slidesPerView: 1,
     slidesPerGroup: 1,
     navigation: {
@@ -200,3 +197,46 @@ links.forEach(link => {
         }
     });
 });
+
+const projetosSwiper = new Swiper('.projetos-swiper', {
+  loop: false,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  slidesPerView: 1,
+});
+
+function toggleCodigo(button) {
+  const pre = button.nextElementSibling;
+  if (pre.classList.contains("hidden")) {
+    pre.classList.remove("hidden");
+    button.textContent = "Esconder código";
+  } else {
+    pre.classList.add("hidden");
+    button.textContent = "Ver código";
+  }
+}
+
+function carregarCodigo(button, caminho) {
+  const container = button.nextElementSibling;
+
+  if (container.innerHTML === '') {
+    fetch(caminho)
+      .then(response => response.text())
+      .then(data => {
+        container.innerHTML = data;
+        container.classList.remove('hidden');
+        button.textContent = 'Esconder código';
+      })
+      .catch(error => {
+        container.innerHTML = '<pre class="codigo-bloco">Erro ao carregar o código.</pre>';
+        container.classList.remove('hidden');
+        button.textContent = 'Esconder código';
+      });
+  } else {
+    container.classList.toggle('hidden');
+    button.textContent = container.classList.contains('hidden') ? 'Ver código' : 'Esconder código';
+  }
+}
+

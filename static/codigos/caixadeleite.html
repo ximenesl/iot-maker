@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+
+// Código de exemplo do projeto Caixa de Leite
+
+GPIOs conectados aos botões
+const int botaoW = 4;
+const int botaoA = 5;
+const int botaoS = 6;
+const int botaoD = 7;
+const int botaoSpace = 8;
+
+void setup() {
+  pinMode(botaoW, INPUT_PULLUP);
+  pinMode(botaoA, INPUT_PULLUP);
+  pinMode(botaoS, INPUT_PULLUP);
+  pinMode(botaoD, INPUT_PULLUP);
+  pinMode(botaoSpace, INPUT_PULLUP);
+
+  Serial.begin(115200);
+  delay(1000);
+}
+
+void loop() {
+  if (digitalRead(botaoW) == LOW) {
+    Serial.println("W");
+    delay(200);
+    while (digitalRead(botaoW) == LOW) delay(10);
+  }
+
+  if (digitalRead(botaoA) == LOW) {
+    Serial.println("A");
+    delay(200);
+    while (digitalRead(botaoA) == LOW) delay(10);
+  }
+
+  if (digitalRead(botaoS) == LOW) {
+    Serial.println("S");
+    delay(200);
+    while (digitalRead(botaoS) == LOW) delay(10);
+  }
+
+  if (digitalRead(botaoD) == LOW) {
+    Serial.println("D");
+    delay(200);
+    while (digitalRead(botaoD) == LOW) delay(10);
+  }
+
+  if (digitalRead(botaoSpace) == LOW) {
+    Serial.println(" ");
+    delay(200);
+    while (digitalRead(botaoSpace) == LOW) delay(10);
+  }
+
+  delay(20);
+}
+
+</head>
+</html>
