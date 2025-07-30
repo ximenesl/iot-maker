@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <head>
 
-// Código de exemplo do projeto Caixa de Leite
+// Código do projeto Caixa de Leite
+
+C++ (rodando no Arduino IDE):
 
 GPIOs conectados aos botões
 const int botaoW = 4;
@@ -54,6 +56,119 @@ void loop() {
 
   delay(20);
 }
+
+Python (rodando no CMD):
+
+import serial
+import socket
+
+# Configurações
+SERIAL_PORT = "COM9"     
+BAUD_RATE = 115200
+UDP_IP = "127.0.0.1"
+UDP_PORT = 8888
+
+
+ser = serial.Serial(SERIAL_PORT, BAUD_RATE)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+print(f"Enviando dados de {SERIAL_PORT} para {UDP_IP}:{UDP_PORT}")
+
+while True:
+    try:
+        line = ser.readline().decode().strip()
+        print("Serial ->", line)
+        sock.sendto(line.encode(), (UDP_IP, UDP_PORT))
+    except Exception as e:
+        print("Erro:", e)
+
+
+C# (rodando na Unity):
+
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class UdpReceiver2D : MonoBehaviour
+{
+    UdpClient client;
+    Thread receiveThread;
+    public int port = 8888;
+    private string lastMessage = "";
+
+    private Rigidbody2D rb;
+    public float force = 5f;       // força de movimento (lateral)
+    public float jumpForce = 8f;   // força do pulo
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        client = new UdpClient(port);
+        receiveThread = new Thread(ReceiveData);
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+    }
+
+    void ReceiveData()
+    {
+        IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, port);
+
+        while (true)
+        {
+            try
+            {
+                byte[] data = client.Receive(ref remoteEP);
+                string text = Encoding.UTF8.GetString(data);
+                Debug.Log("Recebido: " + text);
+                lastMessage = text.Trim(); // Remove espaços, \n etc.
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log("Erro UDP: " + e.Message);
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 velocity = rb.linearVelocity;
+
+        switch (lastMessage)
+        {
+            case "W":
+                velocity.y = force; // sobe
+                break;
+            case "S":
+                velocity.y = -force; // desce
+                break;
+            case "A":
+                velocity.x = -force; // esquerda
+                break;
+            case "D":
+                velocity.x = force; // direita
+                break;
+            case "":
+                // nada pressionado
+                break;
+            case " ":
+                velocity.y = jumpForce; // pulo com espaço
+                break;
+        }
+
+        rb.linearVelocity = velocity;
+        lastMessage = ""; // zera pra não repetir
+    }
+
+    void OnApplicationQuit()
+    {
+        receiveThread?.Abort();
+        client?.Close();
+    }
+}
+
 
 </head>
 </html>
