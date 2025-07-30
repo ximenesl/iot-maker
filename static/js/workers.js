@@ -86,8 +86,8 @@ const workers = [
     {
         name: 'Ygor Sampaio',
         role: 'Participante',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/ygorsampaio1010/',
         image: '/static/imgs/workerYgor.jpg',
-        github: ''
+        github: 'https://github.com/ygorsampaio'
     },
 ]
