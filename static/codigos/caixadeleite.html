@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <head>
 
-// Código do projeto Caixa de Leite
+ 
+CÓDIGO DO PROJETO CAIXA DE LEITE 
 
-C++ (rodando no Arduino IDE):
+C++ (Arduino IDE) 
 
-GPIOs conectados aos botões
+// Código em C++ para Arduino - leitura de botões e envio pela porta serial
+
+// Mapeia os botões físicos para GPIOs do Arduino
 const int botaoW = 4;
 const int botaoA = 5;
 const int botaoS = 6;
@@ -13,77 +16,90 @@ const int botaoD = 7;
 const int botaoSpace = 8;
 
 void setup() {
+  // Define os botões como entrada com pull-up interno (ativa lógica invertida)
   pinMode(botaoW, INPUT_PULLUP);
   pinMode(botaoA, INPUT_PULLUP);
   pinMode(botaoS, INPUT_PULLUP);
   pinMode(botaoD, INPUT_PULLUP);
   pinMode(botaoSpace, INPUT_PULLUP);
 
+  // Inicia comunicação serial com velocidade 115200
   Serial.begin(115200);
-  delay(1000);
+  delay(1000); // Aguarda estabilização
 }
 
 void loop() {
+  // Verifica se botão W está pressionado
   if (digitalRead(botaoW) == LOW) {
-    Serial.println("W");
-    delay(200);
-    while (digitalRead(botaoW) == LOW) delay(10);
+    Serial.println("W");          // Envia "W" pela serial
+    delay(200);                   // Espera para evitar múltiplos envios
+    while (digitalRead(botaoW) == LOW) delay(10); // Espera soltar
   }
 
+  // Botão A
   if (digitalRead(botaoA) == LOW) {
     Serial.println("A");
     delay(200);
     while (digitalRead(botaoA) == LOW) delay(10);
   }
 
+  // Botão S
   if (digitalRead(botaoS) == LOW) {
     Serial.println("S");
     delay(200);
     while (digitalRead(botaoS) == LOW) delay(10);
   }
 
+  // Botão D
   if (digitalRead(botaoD) == LOW) {
     Serial.println("D");
     delay(200);
     while (digitalRead(botaoD) == LOW) delay(10);
   }
 
+  // Botão Espaço
   if (digitalRead(botaoSpace) == LOW) {
-    Serial.println(" ");
+    Serial.println(" ");  // Espaço em branco representa pulo
     delay(200);
     while (digitalRead(botaoSpace) == LOW) delay(10);
   }
 
-  delay(20);
+  delay(20); // Pequeno atraso para estabilidade
 }
 
-Python (rodando no CMD):
+
+Python (Terminal/CMD)
+
+# Código em Python que lê da porta serial e envia via UDP
 
 import serial
 import socket
 
-# Configurações
-SERIAL_PORT = "COM9"     
+# Define as configurações da serial e do destino UDP
+SERIAL_PORT = "COM9"        # Porta COM usada pelo Arduino
 BAUD_RATE = 115200
-UDP_IP = "127.0.0.1"
-UDP_PORT = 8888
+UDP_IP = "127.0.0.1"        # IP local (localhost)
+UDP_PORT = 8888             # Porta que será usada no destino
 
-
+# Inicializa comunicação serial e socket UDP
 ser = serial.Serial(SERIAL_PORT, BAUD_RATE)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 print(f"Enviando dados de {SERIAL_PORT} para {UDP_IP}:{UDP_PORT}")
 
+# Loop infinito lendo a serial e enviando UDP
 while True:
     try:
-        line = ser.readline().decode().strip()
-        print("Serial ->", line)
-        sock.sendto(line.encode(), (UDP_IP, UDP_PORT))
+        line = ser.readline().decode().strip()       # Lê e remove espaços
+        print("Serial ->", line)                     # Mostra no terminal
+        sock.sendto(line.encode(), (UDP_IP, UDP_PORT))  # Envia via UDP
     except Exception as e:
-        print("Erro:", e)
+        print("Erro:", e)  # Exibe erro, se ocorrer
 
 
-C# (rodando na Unity):
+C# (Unity)
+
+// Código C# para receber comandos via UDP e controlar movimento na Unity
 
 using System.Net;
 using System.Net.Sockets;
@@ -93,19 +109,20 @@ using UnityEngine;
 
 public class UdpReceiver2D : MonoBehaviour
 {
-    UdpClient client;
-    Thread receiveThread;
-    public int port = 8888;
-    private string lastMessage = "";
+    UdpClient client;           // Cliente UDP para receber dados
+    Thread receiveThread;       // Thread separada para escutar UDP
+    public int port = 8888;     // Porta de escuta
+    private string lastMessage = "";  // Última mensagem recebida
 
-    private Rigidbody2D rb;
-    public float force = 5f;       // força de movimento (lateral)
-    public float jumpForce = 8f;   // força do pulo
+    private Rigidbody2D rb;     // Corpo do objeto
+    public float force = 5f;    // Força de movimentação
+    public float jumpForce = 8f; // Força do pulo
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent Rigidbody2D() ;  // Pega o Rigidbody2D do objeto
 
+        // Inicia o cliente UDP e a thread de recepção
         client = new UdpClient(port);
         receiveThread = new Thread(ReceiveData);
         receiveThread.IsBackground = true;
@@ -120,10 +137,11 @@ public class UdpReceiver2D : MonoBehaviour
         {
             try
             {
+                // Recebe dados e converte para texto
                 byte[] data = client.Receive(ref remoteEP);
                 string text = Encoding.UTF8.GetString(data);
                 Debug.Log("Recebido: " + text);
-                lastMessage = text.Trim(); // Remove espaços, \n etc.
+                lastMessage = text.Trim(); // Remove quebras de linha e espaços
             }
             catch (System.Exception e)
             {
@@ -134,41 +152,43 @@ public class UdpReceiver2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 velocity = rb.linearVelocity;
+        // Pega a velocidade atual
+        Vector2 velocity = rb.velocity;
 
+        // Verifica qual tecla foi enviada via UDP e move
         switch (lastMessage)
         {
             case "W":
-                velocity.y = force; // sobe
+                velocity.y = force; // Move para cima
                 break;
             case "S":
-                velocity.y = -force; // desce
+                velocity.y = -force; // Move para baixo
                 break;
             case "A":
-                velocity.x = -force; // esquerda
+                velocity.x = -force; // Esquerda
                 break;
             case "D":
-                velocity.x = force; // direita
+                velocity.x = force;  // Direita
                 break;
             case "":
-                // nada pressionado
+                // Nenhuma tecla pressionada
                 break;
             case " ":
-                velocity.y = jumpForce; // pulo com espaço
+                velocity.y = jumpForce; // Pulo com espaço
                 break;
         }
 
-        rb.linearVelocity = velocity;
-        lastMessage = ""; // zera pra não repetir
+        rb.velocity = velocity;
+        lastMessage = ""; // Limpa mensagem para não repetir ação
     }
 
     void OnApplicationQuit()
     {
+        // Encerra a thread e o cliente ao sair do app
         receiveThread?.Abort();
         client?.Close();
     }
 }
-
 
 </head>
 </html>
