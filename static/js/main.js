@@ -123,49 +123,6 @@ const projetosSwiper = new Swiper('.projetos-swiper', {
 });
 
 
-// COMO O CHICO ENXERGA O MUNDO 
-
-const getImages = async (num) => {
-    const response = await fetch(`https://visao.pythonanywhere.com/imagenstransforma/${num}`);
-    const data = await response.json();
-    return data;
-};
-
-const renderImageChico = async () => {
-    const images = await getImages(5);
-
-    const container = document.querySelector('.chico-vision');
-    container.innerHTML = '';
-
-    images.forEach(image => {
-        container.innerHTML += `
-            <div class="swiper-slide">
-                <img src="${image.url}" id="fotos-chico-vision" alt="Foto de exemplo do Chico">
-            </div>
-        `;
-    });
-
-
-    setTimeout(() => {
-        const swiper = new Swiper('.swiper', {
-            direction: 'horizontal',
-            loop: true,
-            loopedSlides: images.length >= 3 ? 3 : images.length, 
-            autoplay: {
-                delay: 3000,
-            },
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    }, 100); // Pequeno delay para garantir que os slides foram renderizados
-};
-
-renderImageChico();
-
 
 
 // SCROOLL SECTIONS
