@@ -97,16 +97,28 @@ sr.reveal('#chico', {origin: 'bottom'})
 
 // SWIPPER
 
-const swiper = new Swiper('.swiper', {
+const swiperFotos = new Swiper('.fotos-swiper', {
     direction: 'horizontal',
     loop: true,
-    loopedSlides: 3, // Número de slides duplicados para o loop funcionar
+    loopedSlides: 3, 
     slidesPerView: 1,
     slidesPerGroup: 1,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+      autoplay: {
+        delay: 3000,
     },
+    navigation: {
+        nextEl: '.fotos-swiper-button-next',
+        prevEl: '.fotos-swiper-button-prev',
+    },
+});
+
+const projetosSwiper = new Swiper('.projetos-swiper', {
+  loop: false,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  slidesPerView: 1,
 });
 
 
@@ -198,14 +210,6 @@ links.forEach(link => {
     });
 });
 
-const projetosSwiper = new Swiper('.projetos-swiper', {
-  loop: false,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  slidesPerView: 1,
-});
 
 function toggleCodigo(button) {
   const pre = button.nextElementSibling;

@@ -424,8 +424,8 @@ font-family: 'Poppin', sans-serif;
 
 .swiper {
     width: 600px;
-    height: 450px;
-    overflow: hidden;
+    height: 1000px;
+    overflow: visible;
 }
 
 .swiper img {
@@ -434,7 +434,6 @@ font-family: 'Poppin', sans-serif;
     object-fit: contain;
     object-position: center;
 }
-
 
 .swiper {
     width: 100%;
@@ -452,7 +451,7 @@ font-family: 'Poppin', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: visible; 
     border-radius: 10px;
 }
 
@@ -463,7 +462,19 @@ font-family: 'Poppin', sans-serif;
     border-radius: 10px; 
 }
 
-.swiper-button-next,.swiper-button-prev {
+.fotos-swiper-button-prev,
+.fotos-swiper-button-next {
+  color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fotos-swiper-button-prev::after,
+.fotos-swiper-button-next::after {
+  font-size: 24px;
+}
+
+.fotos-swiper-button-next,.fotos-swiper-button-prev {
     color: #755126 !important;
 }
 
@@ -1081,6 +1092,10 @@ footer {
 .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 24px;
+}
+
+.swiper-button-next,.swiper-button-prev {
+    color: #755126 !important;
 }
 
 /* Responsividade */
