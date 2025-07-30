@@ -37,9 +37,9 @@ const workers = [
     {
         name: 'Igor Alves',
         role: 'Participante',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/igor-alves15?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
         image: '/static/imgs/workerIgor.jpg',
-        github: ''
+        github: 'https://github.com/Thwisther'
     },
     {
         name: 'Isack Souza',
