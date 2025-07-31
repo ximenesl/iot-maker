@@ -115,13 +115,15 @@ const swiperFotos = new Swiper('.fotos-swiper', {
 
 const projetosSwiper = new Swiper('.projetos-swiper', {
   loop: false,
+  simulateTouch: false,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
   slidesPerView: 1,
+  noSwiping: true,
+  noSwipingClass: 'codigo-nao-deslizar',
 });
-
 
 
 
@@ -180,6 +182,15 @@ function toggleCodigo(button) {
   }
 }
 
+function escaparHTML(texto) {
+  return texto
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function carregarCodigo(button, caminho) {
   const container = button.nextElementSibling;
 
@@ -187,7 +198,8 @@ function carregarCodigo(button, caminho) {
     fetch(caminho)
       .then(response => response.text())
       .then(data => {
-        container.innerHTML = data;
+        const codigoEscapado = escaparHTML(data);
+        container.innerHTML = `<pre class="codigo-bloco">${codigoEscapado}</pre>`;
         container.classList.remove('hidden');
         button.textContent = 'Esconder código';
       })
@@ -201,4 +213,5 @@ function carregarCodigo(button, caminho) {
     button.textContent = container.classList.contains('hidden') ? 'Ver código' : 'Esconder código';
   }
 }
+
 

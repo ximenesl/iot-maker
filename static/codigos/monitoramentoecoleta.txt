@@ -1,0 +1,84 @@
+CÓDIGO DO PROJETO MONITORAMENTO E COLETA DE TEMPERATURA E UMIDADE:
+
+#include <WiFi.h>
+#include <Wire.h>
+#include <DHT.h>
+#include <ThingSpeak.h>
+
+// Definindo as credenciais da rede Wi-Fi
+const char* ssid = "Nome da Rede Wi-Fi”;
+const char* password = "Senha da Rede Wi-Fi";
+
+// Definindo as configurações do ThingSpeak
+unsigned long myChannelNumber = ID do Canal no ThingsSpeak;
+const char* myWriteAPIKey = "API Key do ThingSpeak";
+
+// Definindo o pino ao qual o sensor DHT11 está conectado
+#define DHTPIN 4
+#define DHTTYPE DHT11
+
+// Iniciando o sensor DHT
+DHT dht(DHTPIN, DHTTYPE);
+
+// Cliente Wi-Fi
+WiFiClient client;
+
+void setup() {
+  Serial.begin(115200);
+
+  // Inicializa o sensor DHT
+  dht.begin();
+
+  // Conectando à rede Wi-Fi
+  Serial.print("Conectando-se a ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi conectado!");
+  Serial.println("Endereço IP: ");
+  Serial.println(WiFi.localIP());
+
+  // Iniciando o ThingSpeak
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+  // Verificando se a leitura foi bem sucedida
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Falha ao ler do sensor DHT!");
+    return;
+  }
+
+  // Exibindo os dados no monitor serial
+  Serial.print("Umidade: ");
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperatura: ");
+  Serial.print(t);
+  Serial.println(" *C");
+
+  // Enviando os dados para o ThingSpeak
+  int statusCode = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
+
+  if (statusCode == 200) {
+    Serial.println("Dados enviados com sucesso para o ThingSpeak!");
+  } else {
+    Serial.print("Erro ao enviar dados para o ThingSpeak. Código de erro: ");
+    Serial.println(statusCode);
+  }
+
+  // Define os campos do ThingSpeak
+  ThingSpeak.setField(1, t);
+  ThingSpeak.setField(2, h);
+
+  // Aguarda um tempo antes da próxima leitura (ajuste conforme necessário)
+  // ThingSpeak tem um limite de 15 segundos entre cada escrita gratuita
+  delay(20000); // 20 segundos
+}

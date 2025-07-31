@@ -1060,6 +1060,7 @@ footer {
   transition: 0.3s;
   font-weight: bold;
   width: 100%;
+    max-width: 470px;
 }
 
 .btn-toggle-codigo:hover {
@@ -1074,6 +1075,7 @@ footer {
   padding: 1rem;
   border-radius: 8px;
      max-height: 650px;
+     max-width: 470px;
   overflow-y: auto;
   white-space: pre-wrap;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -1099,6 +1101,31 @@ footer {
 .swiper-button-next,.swiper-button-prev {
     color: #755126 !important;
 }
+
+.codigo-nao-deslizar {
+  user-select: text;            
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+}
+
+.swiper-slide .codigo-nao-deslizar {
+  pointer-events: auto !important;
+  touch-action: manipulation;  
+    user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+
+.swiper-slide * {
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+ 
 
 /* Responsividade */
 @media (max-width: 768px) {

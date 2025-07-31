@@ -113,14 +113,14 @@
         <div class="swiper-slide projeto-slide">
           <div class="projeto-topo">
             <h4>Controle de jogo com Caixa de Leite</h4>
-            <p><strong>Descrição:</strong> Interface física com Arduino Leonardo, protoboard e botões, criada para acessibilidade em jogos.</p>
-            <p><strong>Alunos:</strong> Juliana, Anna Júlia, Arnott</p>
+            <p><strong>Descrição:</strong> Interface física de controle para jogos 2D com 5 teclas (W, A, S, D e Espaço), utilizando uma ESP32C3 ligada aos botões. Este artefato envia inputs das teclas, por meio de um código em C++, para o computador. Um código em Python que roda no CMD do sistema operacional traduz o input do Arduino IDE em input serial. O jogo, por sua vez, roda utilizando C# na engine Unity 6.1. </p>
+            <p><strong>Alunos:</strong> Juliana Vasconcelos, Anna Júlia, Vanda Vitório. </p>
           </div>
           <div class="projeto-imagens">
             <img src="/static/imgs/projeto1-foto.jpg" alt="Projeto físico">
             <div class="codigo-container">
-              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/caixadeleite.html')">Ver código</button>
-              <div class="codigo-bloco hidden"></div>
+              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/caixadeleite.txt')">Ver código</button>
+              <div class="codigo-bloco hidden codigo-nao-deslizar"></div>
             </div>
           </div>
         </div>
@@ -128,14 +128,14 @@
         <!-- SLIDE 2 -->
         <div class="swiper-slide projeto-slide">
           <div class="projeto-topo">
-            <h4>Detector de Presença com Alarme</h4>
-            <p><strong>Descrição:</strong> Lorem Ipsum.</p>
-            <p><strong>Alunos:</strong> Lorem Ipsum</p>
+            <h4>Sensor de Temperatura e Umidade</h4>
+            <p><strong>Descrição:</strong> Feito com um sensor DHT11, uma placa ESP32 mini e um protoboard, este pequeno sensor mapeia os dados de temperatura e umidade do ar e manda as informações a cada 20 segundos para um servidor no Thingspeak via WiFi.  </p>
+            <p><strong>Alunos:</strong> Arthur Bem, Anna Júlia, Vanda Vitório. </p>
           </div>
           <div class="projeto-imagens">
             <img src="/static/imgs/projeto2-foto.jpg" alt="Detector de presença">
             <div class="codigo-container">
-              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/detectorpresenca.html')">Ver código</button>
+              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/sensortemperaturaumidade.txt')">Ver código</button>
               <div class="codigo-bloco hidden"></div>
             </div>
           </div>
@@ -144,14 +144,14 @@
         <!-- SLIDE 3 -->
         <div class="swiper-slide projeto-slide">
           <div class="projeto-topo">
-            <h4>Simulador de Semáforo Educativo</h4>
-            <p><strong>Descrição:</strong> Lorem ipsum.</p>
-            <p><strong>Alunos:</strong> Lorem ipsum</p>
+            <h4>Monitoramento e Coleta de Dados de Temperatura e Umidade com ESP32C3, DHT11 e ThingSpeak.</h4>
+            <p><strong>Descrição:</strong> O projeto tem como objetivo principal o monitoramento e a coleta de dados referentes à temperatura e umidade. Para tanto, foram utilizados o sensor DHT11 e a placa ESP32C3 com a finalidade de coletar os dados do ambiente e enviá-los através de uma conexão Wi-Fi para a plataforma ThingSpeak, permitindo a visualização e análise em tempo real dos dados. Para a montagem do circuito de forma virtual, foi utilizada a plataforma Wokwi, possibilitando o teste com a programação do código em C++, garantindo que tudo esteja funcionando de maneira eficaz antes da implementação física e proporcionando um desenvolvimento com menor risco de falhas. O resultado é uma solução prática em IoT, integrando o sensor DHT1,  a placa ESP32C3 e a nuvem do ThingSpeak, criando um sistema simples e robusto para a coleta e o monitoramento contínuo que pode ser utilizado tanto para auxiliar no controle do clima/tempo no meio ambiente quanto para uso doméstico em projetos residenciais. </p>
+            <p><strong>Alunos:</strong> Juliana Vasconcelos. </p>
           </div>
           <div class="projeto-imagens">
             <img src="/static/imgs/projeto3-foto.jpg" alt="Semáforo educativo">
             <div class="codigo-container">
-              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/semaforo.html')">Ver código</button>
+              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/monitoramentoecoleta.txt')">Ver código</button>
               <div class="codigo-bloco hidden"></div>
             </div>
           </div>
@@ -167,7 +167,7 @@
           <div class="projeto-imagens">
             <img src="/static/imgs/projeto4-foto.jpg" alt="Controle Bluetooth ESP32">
             <div class="codigo-container">
-              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/controlebluetooth.html')">Ver código</button>
+              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/controlebluetooth.txt')">Ver código</button>
               <div class="codigo-bloco hidden"></div>
             </div>
           </div>
@@ -183,7 +183,7 @@
           <div class="projeto-imagens">
             <img src="/static/imgs/projeto5-foto.jpg" alt="Jogo Educativo Joystick">
             <div class="codigo-container">
-              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/jogoeducativo.html')">Ver código</button>
+              <button class="btn-toggle-codigo" onclick="carregarCodigo(this, '/static/codigos/jogoeducativo.txt')">Ver código</button>
               <div class="codigo-bloco hidden"></div>
             </div>
           </div>

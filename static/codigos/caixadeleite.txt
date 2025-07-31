@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<head>
-
- 
-CÓDIGO DO PROJETO CAIXA DE LEITE 
+CÓDIGO DO PROJETO CAIXA DE LEITE:
 
 C++ (Arduino IDE) 
 
@@ -120,7 +116,7 @@ public class UdpReceiver2D : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent Rigidbody2D() ;  // Pega o Rigidbody2D do objeto
+        rb = GetComponent<Rigidbody2D()>;
 
         // Inicia o cliente UDP e a thread de recepção
         client = new UdpClient(port);
@@ -189,6 +185,3 @@ public class UdpReceiver2D : MonoBehaviour
         client?.Close();
     }
 }
-
-</head>
-</html>
