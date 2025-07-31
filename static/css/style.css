@@ -39,7 +39,7 @@
 }
 
 body{
-    background-color: #FFD500;
+    background-color: #CC8D42;
     background-attachment: cover;
     color: #fff;
 }
@@ -71,7 +71,7 @@ main{
     height: 60px;
     width: 100%;
     z-index: 999;
-    background-color: #5C0099;
+    background-color: #755126;
 }
 
 .nav{
@@ -113,7 +113,7 @@ main{
         top: 0;
         right: -100%;
         bottom: 0;
-        background-color: #5C0099;
+        background-color: #755126;
         padding-bottom: 4rem;
         transition: .5s;
         border-left: 1px solid black;
@@ -291,7 +291,7 @@ main{
     border: 0;
     border-radius: 100px;
     cursor: pointer;
-    background-color: #5C0099;
+    background-color: #755126;
     transition: .3s;
 }
 .btn-saiba-mais a:hover{
@@ -1060,7 +1060,6 @@ footer {
   transition: 0.3s;
   font-weight: bold;
   width: 100%;
-    max-width: 470px;
 }
 
 .btn-toggle-codigo:hover {
@@ -1075,7 +1074,6 @@ footer {
   padding: 1rem;
   border-radius: 8px;
      max-height: 650px;
-     max-width: 470px;
   overflow-y: auto;
   white-space: pre-wrap;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -1102,31 +1100,6 @@ footer {
     color: #755126 !important;
 }
 
-.codigo-nao-deslizar {
-  user-select: text;            
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  cursor: text;
-}
-
-.swiper-slide .codigo-nao-deslizar {
-  pointer-events: auto !important;
-  touch-action: manipulation;  
-    user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-}
-
-.swiper-slide * {
-  user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  cursor: text;
-  touch-action: manipulation;
-  pointer-events: auto;
-}
- 
-
 /* Responsividade */
 @media (max-width: 768px) {
   .projeto-imagens {
@@ -1143,4 +1116,3 @@ footer {
     width: 100%;
   }
 }
-
