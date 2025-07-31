@@ -39,7 +39,7 @@
 }
 
 body{
-    background-color: #CC8D42;
+    background-color: #FFD500;
     background-attachment: cover;
     color: #fff;
 }
@@ -71,7 +71,7 @@ main{
     height: 60px;
     width: 100%;
     z-index: 999;
-    background-color: #755126;
+    background-color: #5C0099;
 }
 
 .nav{
@@ -113,7 +113,7 @@ main{
         top: 0;
         right: -100%;
         bottom: 0;
-        background-color: #755126;
+        background-color: #5C0099;
         padding-bottom: 4rem;
         transition: .5s;
         border-left: 1px solid black;
@@ -291,7 +291,7 @@ main{
     border: 0;
     border-radius: 100px;
     cursor: pointer;
-    background-color: #755126;
+    background-color: #5C0099;
     transition: .3s;
 }
 .btn-saiba-mais a:hover{
@@ -585,7 +585,7 @@ font-family: 'Poppin', sans-serif;
 .worker-item .worker-social i{
     font-size: 2rem;
     cursor: pointer;
-    color: #755126;
+    color: #5C0099;
 }
 .worker-item h4{
     font-size: 1.4rem;
