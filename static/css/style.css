@@ -425,7 +425,7 @@ font-family: 'Poppin', sans-serif;
 
 .swiper {
     width: 600px;
-    height: 300px;
+    height: 1000px;
     overflow: visible;
 }
 
@@ -440,7 +440,7 @@ font-family: 'Poppin', sans-serif;
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    margin-bottom: 2rem;
+    margin-botton: -200px;
 }
 
 .swiper-wrapper {
