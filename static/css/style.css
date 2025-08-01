@@ -482,6 +482,7 @@ font-family: 'Poppin', sans-serif;
     align-items: center;
     overflow: visible; 
     border-radius: 10px;
+    margin-bottom: 8rem;
 }
 
 .swiper-slide img {

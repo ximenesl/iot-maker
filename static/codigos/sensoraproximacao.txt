@@ -1,0 +1,56 @@
+CÓDIGO DO PROJETO SENSOR DE APROXIMAÇÃO COM LED INTERMITENTE
+
+// Pinos do sensor ultrassônico
+const int trigPin = 9;
+const int echoPin = 10;
+
+// LED
+const int ledPin = 7;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600); // Inicializa o monitor serial
+}
+
+void loop() {
+  // Envia pulso
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Lê o tempo de resposta
+  long duration = pulseIn(echoPin, HIGH);
+
+  // Calcula distância (em cm)
+  float distance = duration * 0.034 / 2;
+
+  // Mostra a distância no monitor serial
+  Serial.print("Distância: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Define o tempo de piscar com base na distância
+  int blinkDelay;
+
+  if (distance < 5) {
+    blinkDelay = 50;
+  } else if (distance < 10) {
+    blinkDelay = 150;
+  } else if (distance < 20) {
+    blinkDelay = 300;
+  } else if (distance < 40) {
+    blinkDelay = 600;
+  } else {
+    blinkDelay = 1000;
+  }
+
+  // Pisca o LED com o delay calculado
+  digitalWrite(ledPin, HIGH);
+  delay(blinkDelay);
+  digitalWrite(ledPin, LOW);
+  delay(blinkDelay);
+}
