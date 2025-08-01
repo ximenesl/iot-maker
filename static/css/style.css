@@ -39,7 +39,7 @@
 }
 
 body{
-    background-color: #CC8D42;
+    background-color: #ff9100;
     background-attachment: cover;
     color: #fff;
 }
@@ -71,7 +71,7 @@ main{
     height: 60px;
     width: 100%;
     z-index: 999;
-    background-color: #755126;
+    background-color: #5C0099;
 }
 
 .nav{
@@ -113,7 +113,7 @@ main{
         top: 0;
         right: -100%;
         bottom: 0;
-        background-color: #755126;
+        background-color: #5C0099;
         padding-bottom: 4rem;
         transition: .5s;
         border-left: 1px solid black;
@@ -135,7 +135,7 @@ main{
     border-radius: 20px;
 }
 .nav-list li a:hover{
-    background-color: #755126;
+    background-color: #5C0099;
     
 }
 
@@ -188,7 +188,7 @@ main{
 /* BACKGROUND HEADER */
 
 .background-header{
-    background-color: #755126;
+    background-color: #5C0099;
 }
 
 
@@ -291,11 +291,11 @@ main{
     border: 0;
     border-radius: 100px;
     cursor: pointer;
-    background-color: #755126;
+    background-color: #5C0099;
     transition: .3s;
 }
 .btn-saiba-mais a:hover{
-    background-color: #755126;
+    background-color: #5C0099;
 }
 
 
@@ -330,6 +330,34 @@ font-family: 'Poppin', sans-serif;
   font-size: 1.4rem;
   text-align: justify;
 }
+
+.how-where-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: nowrap; /* ⚠️ impede quebra de linha */
+  margin-bottom: 20px;
+}
+
+.how-where-item .imagem {
+  width: 30%; /* imagem na esquerda com largura controlada */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.how-where-item .imagem img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.how-where-item .info {
+  width: 70%; /* texto na direita */
+}
+
 
 .how-it-item {
   display: flex;
@@ -406,7 +434,7 @@ font-family: 'Poppin', sans-serif;
 }
 
 .step:hover{
-    background-color: #755126;
+    background-color: #5C0099;
 }
 
 
@@ -476,7 +504,7 @@ font-family: 'Poppin', sans-serif;
 }
 
 .fotos-swiper-button-next,.fotos-swiper-button-prev {
-    color: #755126 !important;
+    color: #5C0099 !important;
 }
 
 #fotos-chico-vision{
@@ -585,7 +613,7 @@ font-family: 'Poppin', sans-serif;
 .worker-item .worker-social i{
     font-size: 2rem;
     cursor: pointer;
-    color: #755126;
+    color: #5C0099;
 }
 .worker-item h4{
     font-size: 1.4rem;
@@ -598,7 +626,7 @@ font-family: 'Poppin', sans-serif;
 }
 
 #filter{
-    background-color: #755126;
+    background-color: #5C0099;
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
     cursor: pointer;
@@ -614,7 +642,7 @@ font-family: 'Poppin', sans-serif;
 }
 
 .slider{
-    background-color: #755126;
+    background-color: #FFD500;
     width: 100%;
     height: 400px;
     margin-top: 1rem;
@@ -721,7 +749,7 @@ footer {
 }
   
 ::-webkit-scrollbar-thumb{
-    background: #E1A80D;
+    background: #5C0099;
     border-radius: .5rem;
 }
 
@@ -917,6 +945,62 @@ footer {
         max-width: 50%;
     }
 }
+
+/*PROCESSO*/
+
+.processo-novo {
+    padding: 60px 20px;
+}
+
+.processo-novo .subtitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.processo-novo .section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.processo-novo .processo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+.processo-novo .processo-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.processo-novo .processo-item:hover {
+    transform: translateY(-5px);
+}
+
+.processo-novo .processo-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1);
+}
+
+.processo-novo .processo-item p {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+}
+
 #how-to-play {
     text-align: center;
     padding: 50px 0 1px;
@@ -941,7 +1025,7 @@ footer {
 .link-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #755126;
+    background-color: #5C0099;
     color: #fff;
     text-decoration: none;
     border-radius: 100px;
@@ -1000,7 +1084,7 @@ footer {
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  background-color: #c18b43;
+  background-color: #ff9e00;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -1049,7 +1133,7 @@ footer {
 
 /* Botão de código externo */
 .btn-toggle-codigo {
-  background-color: #755126;
+  background-color: #5C0099;
   color: #fff;
   padding: 10px 16px;
   border: none;

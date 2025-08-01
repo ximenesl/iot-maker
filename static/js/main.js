@@ -43,13 +43,13 @@ function renderWorkers(filter = "all") {
     workersContainer.innerHTML = ""; // Limpa os trabalhadores atuais
 
     workers
-        .filter(worker => 
-            filter === "all" || 
-            worker.role === filter || 
-            (filter === "Mentor" && worker.role === "Mentora") || // Permite "Mentor" e "Mentora"
-            (filter === "Monitor") ||
-            (filter === "Participantes" && worker.role === "Participante")
-        )
+        .filter(worker => {
+            if (filter === "all") return true;
+            if (filter === "Mentor") return worker.role === "Mentor" || worker.role === "Mentora";
+            if (filter === "Monitor") return worker.role === "Monitor";
+            if (filter === "Participantes") return worker.role === "Participante";
+            return false;
+        })
         .forEach(worker => {
             const workerDiv = document.createElement("div");
             workerDiv.classList.add("worker-item");
